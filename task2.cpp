@@ -25,14 +25,14 @@ void shell(int *items, int count)
 	}
 }
 
-void qs(int *items, int left, int right) //вызов функции: qs(items, 0, count-1);
+void qs(int *items, int left, int right) //РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё: qs(items, 0, count-1);
 {
 	int i, j;
 	int x, y;
 
 	i = left; j = right;
 
-	/* выбор компаранда */
+	/* РІС‹Р±РѕСЂ РєРѕРјРїР°СЂР°РЅРґР° */
 	x = items[(left + right) / 2];
 
 	do {
@@ -51,11 +51,11 @@ void qs(int *items, int left, int right) //вызов функции: qs(items, 0, count-1);
 	if (i < right) qs(items, i, right);
 }
 
-/* --- компаратор для qsort --- */
+/* --- РєРѕРјРїР°СЂР°С‚РѕСЂ РґР»СЏ qsort --- */
 int cmp(const void *a, const void *b)
 {
 	int x = *(const int*)a, y = *(const int*)b;
-	return (x > y) - (x < y);
+	return (x > y) - (x < y);   
 }
 
 int main()
@@ -64,17 +64,17 @@ int main()
 	clock_t s1, e1, s2, e2, s3, e3;
 	double t1, t2, t3;
 
-	const int N = 10000;
+	const int N = 50000;
 	int *Mas = (int*)malloc(N * sizeof(int));
 	int *CopyShell = (int*)malloc(N * sizeof(int));
 	int *CopyQS = (int*)malloc(N * sizeof(int));
 	int *CopyStd = (int*)malloc(N * sizeof(int));
 	if (!Mas || !CopyShell || !CopyQS || !CopyStd) {
-		printf("Ошибка выделения памяти\n");
+		printf("РћС€РёР±РєР° РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё\n");
 		return 1;
 	}
 
-	//Задание 1
+	//Р—Р°РґР°РЅРёРµ 1
 	srand(time(NULL));
 	for (int i = 0; i < N; i++)
 		Mas[i] = -20 + rand() % 61;
@@ -91,10 +91,10 @@ int main()
 	t1 = (double)(e1 - s1) / CLOCKS_PER_SEC;
 	t2 = (double)(e2 - s2) / CLOCKS_PER_SEC;
 	t3 = (double)(e3 - s3) / CLOCKS_PER_SEC;
-	printf("Задание 1 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
+	printf("Р—Р°РґР°РЅРёРµ 1 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
 		t1, t2, t3);
 
-	//Задание 2
+	//Р—Р°РґР°РЅРёРµ 2
 	for (int i = 0; i < N; i++) Mas[i] = i + 1;
 
 	memcpy(CopyShell, Mas, N * sizeof(int));
@@ -109,10 +109,10 @@ int main()
 	t1 = (double)(e1 - s1) / CLOCKS_PER_SEC;
 	t2 = (double)(e2 - s2) / CLOCKS_PER_SEC;
 	t3 = (double)(e3 - s3) / CLOCKS_PER_SEC;
-	printf("Задание 2 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
+	printf("Р—Р°РґР°РЅРёРµ 2 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
 		t1, t2, t3);
 
-	//Задание 3
+	//Р—Р°РґР°РЅРёРµ 3
 	for (int i = 0; i < N; i++) Mas[i] = N - i;
 
 	memcpy(CopyShell, Mas, N * sizeof(int));
@@ -127,10 +127,10 @@ int main()
 	t1 = (double)(e1 - s1) / CLOCKS_PER_SEC;
 	t2 = (double)(e2 - s2) / CLOCKS_PER_SEC;
 	t3 = (double)(e3 - s3) / CLOCKS_PER_SEC;
-	printf("Задание 3 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
+	printf("Р—Р°РґР°РЅРёРµ 3 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n",
 		t1, t2, t3);
 
-	// Задание 4
+	// Р—Р°РґР°РЅРёРµ 4
 	for (int i = 0; i < 10000; i++)       Mas[i] = i + 1;
 	for (int i = 10000; i < N; i++)       Mas[i] = N - i;
 
@@ -146,7 +146,7 @@ int main()
 	t1 = (double)(e1 - s1) / CLOCKS_PER_SEC;
 	t2 = (double)(e2 - s2) / CLOCKS_PER_SEC;
 	t3 = (double)(e3 - s3) / CLOCKS_PER_SEC;
-	printf("Задание 4 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n", t1, t2, t3);
+	printf("Р—Р°РґР°РЅРёРµ 4 :\n  Shell=%f\n  QS=%f\n  qsort=%f\n", t1, t2, t3);
 
 	free(Mas);
 	free(CopyShell);
